@@ -22,7 +22,7 @@ public class LeafGroup extends TreeComponent {
 
         for (int i = 2; i <= this.coordList.length(); i++) {
             float r = Menu.getRandomRadiusFactor() * Menu.getSizeFactor() * 25;
-            Coordinate c = coordList.getObject(i);
+            Coordinate c = coordList.getCoordinateAt(i);
             c.x = p.random(c.x - r, c.x + r);
             c.y = p.random(c.y - r, c.y + r);
         }
@@ -41,7 +41,7 @@ public class LeafGroup extends TreeComponent {
                 p.fill(Menu.getColorOfLeaves()[0]+30,Menu.getColorOfLeaves()[1]+30, Menu.getColorOfLeaves()[2]+30 ,200);
             }
 
-            Coordinate c = coordList.getObject(i);
+            Coordinate c = coordList.getCoordinateAt(i);
 
             float randomAngle = p.random(-p.PI/2, p.PI/2);
             p.pushMatrix();

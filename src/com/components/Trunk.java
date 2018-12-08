@@ -55,11 +55,11 @@ public class Trunk extends TreeComponent {
 
         p.beginShape();
         for (int i = 1; i <= this.coordList.length(); i++) {
-            Coordinate c = coordList.getObject(i);
+            Coordinate c = coordList.getCoordinateAt(i);
             p.vertex(c.x - stemWidth / 2 + incrementNarrow * i, c.y);
         }
         for (int i = this.coordList.length(); i >= 1; i--) {
-            Coordinate c = coordList.getObject(i);
+            Coordinate c = coordList.getCoordinateAt(i);
             p.vertex(c.x + stemWidth / 2 - incrementNarrow * i, c.y);
         }
         p.endShape();

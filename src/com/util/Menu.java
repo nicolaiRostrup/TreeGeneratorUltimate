@@ -1,7 +1,6 @@
 package com.util;
 
 import com.enums.*;
-
 import java.util.Scanner;
 
 
@@ -50,16 +49,16 @@ public class Menu {
     }
 
     //todo: create full list of key variables
-    static float sizeFactor;
-    static float crownWidthFactor;
-    static float crownHeightFactor;
-    static float randomRadiusFactor;
-    static int branchNumberLow;
-    static int branchNumberHigh;
-    static float branchLengthLow;
-    static float branchLengthHigh;
-    static int[] colorOfBark;
-    static int[] colorOfLeaves;
+    private static float sizeFactor;
+    private static float crownWidthFactor;
+    private static float crownHeightFactor;
+    private static float randomRadiusFactor;
+    private static int branchNumberLow;
+    private static int branchNumberHigh;
+    private static float branchLengthLow;
+    private static float branchLengthHigh;
+    private static int[] colorOfBark;
+    private static int[] colorOfLeaves;
 
 
     private TreeSize treeSize;

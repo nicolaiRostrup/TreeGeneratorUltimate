@@ -41,7 +41,7 @@ public class SmallBranch extends TreeComponent{
         p.beginShape();
         for (int i = 1; i <= this.coordList.length() ; i++) {
 
-            Coordinate c = coordList.getObject(i);
+            Coordinate c = coordList.getCoordinateAt(i);
             p.vertex(c.x, c.y);
 
         }

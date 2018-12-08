@@ -12,6 +12,8 @@ public class Node {
 
     Coordinate c;
 
+    String s;
+
     public TreeComponent getT() {
         return t;
     }
@@ -28,5 +30,11 @@ public class Node {
     Node(Coordinate c) {
 
         this.c = c;
+    }
+
+    //This constructor is used for dummy object creation only.
+    Node(String s) {
+
+        this.s = s;
     }
 }

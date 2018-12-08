@@ -28,7 +28,7 @@ public class TreeGenerator {
         allTreeComponents.insertFromTail(trunk);
 
         trunk.coordList.insertFromTail(new Coordinate(p.width / 2f, 0));
-        trunk.coordList.insertFromTail(new Coordinate(p.width / 2f, p.height * Menu.sizeFactor));
+        trunk.coordList.insertFromTail(new Coordinate(p.width / 2f, p.height * Menu.getSizeFactor()));
 
         trunk.growAngle = AdditionalTools.getAngleFromVector(
                 trunk.coordList.getHead().getC().getX(),
@@ -94,9 +94,9 @@ public class TreeGenerator {
 
             TreeComponent openEnd = allTreeComponents.nextOpenEnd();
 
-            int branchNumber = (int) p.random(Menu.branchNumberLow, Menu.branchNumberHigh);
+            int branchNumber = (int) p.random(Menu.getBranchNumberLow(), Menu.getBranchNumberHigh());
 
-            float totalAngle = 2 * Menu.crownWidthFactor * branchNumber;
+            float totalAngle = 2 * Menu.getCrownWidthFactor() * branchNumber;
             float incrementAngle = totalAngle / (branchNumber - 1);
             float theta = openEnd.growAngle - totalAngle / 2f;
 
@@ -106,7 +106,7 @@ public class TreeGenerator {
 
             for (int j = 0; j < branchNumber; j++) {
 
-                float branchLength = p.random(Menu.branchLengthLow, Menu.branchLengthHigh);
+                float branchLength = p.random(Menu.getBranchLengthLow(), Menu.getBranchLengthHigh());
 
                 TreeComponent t = new BranchObject(p, branchType).returnMe();
 
@@ -270,7 +270,7 @@ public class TreeGenerator {
 
         for (int i = 1; i <= allTreeComponents.length(); i++) {
 
-            allTreeComponents.getObject(i).makeIrregular();
+            allTreeComponents.getTreeComponentAt(i).makeIrregular();
         }
 
     }
@@ -280,7 +280,7 @@ public class TreeGenerator {
 
         for (int i = 1; i <= allTreeComponents.length(); i++) {
 
-            allTreeComponents.getObject(i).generateShading();
+            allTreeComponents.getTreeComponentAt(i).generateShading();
 
         }
     }
