@@ -1,7 +1,6 @@
 //This project is in debt to the processing script supplied by Kung-Ta Tseng for producing generative trees. Thank you.
 package com;
 
-import com.util.Menu;
 import com.util.NumberMachine;
 import com.util.TreeGenerator;
 import processing.core.PApplet;
@@ -13,10 +12,10 @@ public class MainApp extends PApplet {
 
     public static void main(String[] args) {
 
-        Menu menu = new Menu();
-        menu.welcomeMessage();
-        menu.gatherTreeDesign();
-        menu.processUserPreferences();
+//        Menu menu = new Menu();
+//        menu.welcomeMessage();
+//        menu.gatherTreeDesign();
+//        menu.processUserPreferences();
 
         PApplet.main("com.MainApp", args);
 
@@ -24,7 +23,7 @@ public class MainApp extends PApplet {
 
 
     public void settings() {
-        size(1500, 1200);
+        size(1400, 1000);
 
     }
 
@@ -41,17 +40,17 @@ public class MainApp extends PApplet {
 
         TreeGenerator treeGenerator = new TreeGenerator(this);
 
-        treeGenerator.createTrunk();
+        treeGenerator.createBaseTrunk();
+
+        treeGenerator.createTrunkSections();
+
+        treeGenerator.createTopTrunk();
 
         treeGenerator.createBranches();
 
-        treeGenerator.createSmallBranches();
-
         treeGenerator.createTwigs();
 
-        treeGenerator.createLeaves();
-
-        treeGenerator.makeTreeIrregular();
+        treeGenerator.generateLeaves();
 
         treeGenerator.shadeDrawing();
 
@@ -60,6 +59,9 @@ public class MainApp extends PApplet {
         attachSerialNumber();
 
         saveImageToDisk();
+
+        System.out.println("Tree drawing complete");
+        System.out.println("Total number of tree components: " + treeGenerator.returnLength());
 
     }
 
@@ -82,6 +84,7 @@ public class MainApp extends PApplet {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 
 

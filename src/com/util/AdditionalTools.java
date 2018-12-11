@@ -5,10 +5,10 @@ import processing.core.PApplet;
 import static processing.core.PApplet.atan;
 
 
-class AdditionalTools {
+public class AdditionalTools {
 
 
-    static float[] toPolar(float x, float y) {
+    public static float[] toPolar(float x, float y) {
 
         float r = (float) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
 
@@ -18,7 +18,7 @@ class AdditionalTools {
 
     }
 
-    static Coordinate toCartesian(float r, float theta) {
+    public static Coordinate toCartesian(float r, float theta) {
 
         float x = (float) (r * Math.cos(theta));
 
@@ -28,7 +28,7 @@ class AdditionalTools {
 
     }
 
-    static Coordinate localPolarInput(float x, float y, float r, float theta) {
+    public static Coordinate localPolarInput(float x, float y, float r, float theta) {
 
         float newX = (float) (r * Math.cos(theta));
 
@@ -41,13 +41,13 @@ class AdditionalTools {
 
     }
 
-    static Coordinate localCartesianInput(float x, float y, float v, float w) {
+    public static Coordinate localCartesianInput(float x, float y, float v, float w) {
 
         return new Coordinate (x+v, y+w);
     }
 
 
-    static float getAngleFromVector(float x, float y, float v, float w) {
+    public static float getAngleFromVector(float x, float y, float v, float w) {
 
         return PApplet.atan2(w - y, v - x);
     }
