@@ -1,8 +1,6 @@
 package com.components;
 
 
-import com.util.AdditionalTools;
-import com.util.Menu;
 import processing.core.PApplet;
 
 public abstract class TreeComponent {
@@ -41,20 +39,15 @@ public abstract class TreeComponent {
 
     }
 
-    public float getGrowAngle() {
-
-        return PApplet.atan2(this.topCoordinate.y - this.rootCoordinate.y, this.topCoordinate.x - this.rootCoordinate.x);
-    }
-
     public Coordinate extendEndpoint() {
-        float extensionLength = 0.35f * this.getLength() * this.endWidth / Menu.getInitialWidth();
-        Coordinate extendedTopCoordinate = AdditionalTools.localPolarInput(
+        float extensionLength = 0.2f * this.getLength();
+        return Coordinate.localPolarInput(
                 this.topCoordinate.getX(),
                 this.topCoordinate.getY(),
                 extensionLength,
                 this.growAngle);
-        return extendedTopCoordinate;
 
     }
+
 
 }

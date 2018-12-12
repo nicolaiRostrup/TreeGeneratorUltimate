@@ -9,6 +9,7 @@ public class TreeGenerator {
 
     private PApplet p;
     private Tree tree = new Tree();
+    private TreeDesign treeDesign = TreeDesign.getInstance();
 
 
     public TreeGenerator(PApplet p) {
@@ -29,11 +30,11 @@ public class TreeGenerator {
 
         trunk.hasOpenEnd = true;
         trunk.growAngle = p.PI / 2;
-        trunk.endWidth = Menu.getInitialWidth() * 1.2f;
+        trunk.endWidth = treeDesign.getInitialWidth() * 1.2f;
         trunk.rootCoordinate = new Coordinate(p.width / 2f, 0);
-        trunk.topCoordinate = AdditionalTools.localPolarInput(
+        trunk.topCoordinate = Coordinate.localPolarInput(
                 trunk.rootCoordinate.getX(), trunk.rootCoordinate.getY(),
-                Menu.getTrunkHeight() / Menu.getMaxTrunkSections(),
+                treeDesign.getTrunkHeight() / treeDesign.getMaxTrunkSections(),
                 trunk.growAngle);
 
     }
@@ -47,21 +48,21 @@ public class TreeGenerator {
             tree.insertFromTail(trunk);
 
             trunk.hasOpenEnd = true;
-            trunk.growAngle = p.PI / 2 + (p.random(Menu.getRelativeRotationMin(), Menu.getRelativeRotationMax()) / 5);
+            trunk.growAngle = p.PI / 2 + (p.random(treeDesign.getRelativeRotationMin(), treeDesign.getRelativeRotationMax()) / 5);
             trunk.endWidth = openEnd.endWidth;
             trunk.rootCoordinate = openEnd.topCoordinate;
-            trunk.topCoordinate = AdditionalTools.localPolarInput(
+            trunk.topCoordinate = Coordinate.localPolarInput(
                     trunk.rootCoordinate.getX(), trunk.rootCoordinate.getY(),
-                    Menu.getTrunkHeight() / Menu.getMaxTrunkSections(),
+                    treeDesign.getTrunkHeight() / treeDesign.getMaxTrunkSections(),
                     trunk.growAngle);
 
             if (createBigBranch()) {
-                float theta = (p.random(Menu.getBigBranchAngleLow(), Menu.getBigBranchAngleHigh()));
+                float theta = (p.random(treeDesign.getBigBranchAngleLow(), treeDesign.getBigBranchAngleHigh()));
                 createBigBranch(trunk, theta);
             }
 
             if (createBigBranch()) {
-                float theta = (p.random(Menu.getBigBranchAngleLow(), Menu.getBigBranchAngleHigh()));
+                float theta = (p.random(treeDesign.getBigBranchAngleLow(), treeDesign.getBigBranchAngleHigh()));
                 theta = p.PI - theta;
                 createBigBranch(trunk, theta);
             }
@@ -69,7 +70,7 @@ public class TreeGenerator {
             openEnd.hasOpenEnd = false;
 
         }
-        while (tree.length() <= Menu.getMaxTrunkSections());
+        while (tree.length() <= treeDesign.getMaxTrunkSections());
 
     }
 
@@ -81,12 +82,12 @@ public class TreeGenerator {
         tree.insertFromTail(trunk);
 
         trunk.hasOpenEnd = true;
-        trunk.growAngle = p.PI / 2 + p.random(Menu.getRelativeRotationMin(), Menu.getRelativeRotationMax());
+        trunk.growAngle = p.PI / 2 + p.random(treeDesign.getRelativeRotationMin(), treeDesign.getRelativeRotationMax());
         trunk.endWidth = openEnd.endWidth;
         trunk.rootCoordinate = openEnd.topCoordinate;
-        trunk.topCoordinate = AdditionalTools.localPolarInput(
+        trunk.topCoordinate = Coordinate.localPolarInput(
                 trunk.rootCoordinate.getX(), trunk.rootCoordinate.getY(),
-                Menu.getTrunkHeight() / Menu.getMaxTrunkSections(),
+                treeDesign.getTrunkHeight() / treeDesign.getMaxTrunkSections(),
                 trunk.growAngle);
 
         openEnd.hasOpenEnd = false;
@@ -101,7 +102,7 @@ public class TreeGenerator {
 
     private void createBigBranch(Trunk openEnd, float theta) {
 
-        float branchLength = p.random(Menu.getBranchLengthLow(), Menu.getBranchLengthHigh());
+        float branchLength = p.random(treeDesign.getBranchLengthLow(), treeDesign.getBranchLengthHigh());
 
         Branch bigBranch = new Branch(p);
         tree.insertFromTail(bigBranch);
@@ -111,7 +112,7 @@ public class TreeGenerator {
         bigBranch.endWidth = (openEnd.endWidth / 3);
 
         bigBranch.rootCoordinate = openEnd.topCoordinate;
-        bigBranch.topCoordinate = AdditionalTools.localPolarInput(
+        bigBranch.topCoordinate = Coordinate.localPolarInput(
                 bigBranch.rootCoordinate.getX(),
                 bigBranch.rootCoordinate.getY(),
                 branchLength,
@@ -125,27 +126,22 @@ public class TreeGenerator {
 
             TreeComponent openEnd = tree.getNextOpenEnd();
 
-//            if (openEnd.topCoordinate.getY() > 900) {
-//                openEnd.hasOpenEnd = false;
-//                continue;
-//            }
+            int branchNumber = (int) p.random(treeDesign.getBranchNumberLow(), treeDesign.getBranchNumberHigh());
 
-            int branchNumber = (int) p.random(Menu.getBranchNumberLow(), Menu.getBranchNumberHigh());
-
-            float totalAngle = Menu.getBasicAngle() * branchNumber;
+            float totalAngle = treeDesign.getBasicAngle() * branchNumber;
             float incrementAngle = totalAngle / (branchNumber - 1);
-            float theta = (openEnd.growAngle - totalAngle / 2f) + p.random(Menu.getRelativeRotationMin(), Menu.getRelativeRotationMax());
+            float theta = (openEnd.growAngle - totalAngle / 2f) + p.random(treeDesign.getRelativeRotationMin(), treeDesign.getRelativeRotationMax());
 
 
             for (int j = 0; j < branchNumber; j++) {
 
-                if (theta < -Menu.getTrimLimitAngle()) {
+                if (theta < -treeDesign.getTrimLimitAngle()) {
                     continue;
                 }
 
-                float branchLength = (p.random(Menu.getBranchLengthLow(), Menu.getBranchLengthHigh()));
+                float branchLength = (p.random(treeDesign.getBranchLengthLow(), treeDesign.getBranchLengthHigh()));
 
-                if (Menu.getStretchTopBranches()) {
+                if (treeDesign.getStretchTopBranches()) {
 
                     branchLength *= PApplet.sin(theta);
                 }
@@ -157,12 +153,12 @@ public class TreeGenerator {
                 branch.growAngle = theta;
 
                 branch.endWidth = (openEnd.endWidth / branchNumber) * 1.25f;
-                if (branch.endWidth < Menu.getMinBranchThickness()) {
+                if (branch.endWidth < treeDesign.getMinBranchThickness()) {
                     branch.hasOpenEnd = false;
                 }
 
                 branch.rootCoordinate = openEnd.topCoordinate;
-                branch.topCoordinate = AdditionalTools.localPolarInput(
+                branch.topCoordinate = Coordinate.localPolarInput(
                         branch.rootCoordinate.getX(),
                         branch.rootCoordinate.getY(),
                         branchLength,
@@ -170,7 +166,7 @@ public class TreeGenerator {
 
                 theta = theta + incrementAngle;
 
-                if (theta + incrementAngle > p.PI + Menu.getTrimLimitAngle()) {
+                if (theta + incrementAngle > p.PI + treeDesign.getTrimLimitAngle()) {
                     break;
                 }
             }
@@ -181,7 +177,7 @@ public class TreeGenerator {
 
     public void createTwigs() {
 
-        tree.reopenThinBranches();
+        tree.reopenThinBranches(treeDesign.getMinBranchThickness());
 
         do {
 
@@ -189,31 +185,31 @@ public class TreeGenerator {
 
             //First (top) twig
             Twig twig = new Twig(p);
-            attachTwig(twig, b.getLength() / 3, b.getMiddlePoint(), b.getGrowAngle());
+            attachTwig(twig, b.getLength() / 3, b.getMiddlePoint(), b.growAngle);
 
             //second twig
             Twig twig2 = new Twig(p);
-            attachTwig(twig2, b.getLength() / 3, b.getMiddlePoint(), b.getGrowAngle() - p.PI / 4);
+            attachTwig(twig2, b.getLength() / 3, b.getMiddlePoint(), b.growAngle - p.PI / 4);
 
             //third twig
-            Coordinate thirdTwigRoot = AdditionalTools.localPolarInput(
+            Coordinate thirdTwigRoot = Coordinate.localPolarInput(
                     b.rootCoordinate.getX(),
                     b.rootCoordinate.getY(),
                     b.getLength() * 0.4f,
-                    b.getGrowAngle());
+                    b.growAngle);
 
             Twig twig3 = new Twig(p);
-            attachTwig(twig3, b.getLength() / 3, thirdTwigRoot, b.getGrowAngle() + p.PI / 4);
+            attachTwig(twig3, b.getLength() / 3, thirdTwigRoot, b.growAngle + p.PI / 4);
 
             //fourth twig
-            Coordinate fourthTwigRoot = AdditionalTools.localPolarInput(
+            Coordinate fourthTwigRoot = Coordinate.localPolarInput(
                     b.rootCoordinate.getX(),
                     b.rootCoordinate.getY(),
                     b.getLength() * 0.25f,
-                    b.getGrowAngle());
+                    b.growAngle);
 
             Twig twig4 = new Twig(p);
-            attachTwig(twig4, b.getLength() / 3, fourthTwigRoot, b.getGrowAngle() - p.PI / 4);
+            attachTwig(twig4, b.getLength() / 3, fourthTwigRoot, b.growAngle - p.PI / 4);
 
             //fifth twig - to be exchanged with Branch b.
             Twig twig5 = new Twig(p);
@@ -233,7 +229,7 @@ public class TreeGenerator {
         twig.growAngle = angle;
         twig.twigLength = length;
         twig.rootCoordinate = root;
-        twig.topCoordinate = AdditionalTools.localPolarInput(
+        twig.topCoordinate = Coordinate.localPolarInput(
                 twig.rootCoordinate.getX(),
                 twig.rootCoordinate.getY(),
                 length,
@@ -273,6 +269,7 @@ public class TreeGenerator {
 
         return tree.length();
     }
+
 }
 
 

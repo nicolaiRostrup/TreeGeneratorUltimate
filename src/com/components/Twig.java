@@ -1,6 +1,5 @@
 package com.components;
 
-import com.util.AdditionalTools;
 import processing.core.PApplet;
 
 import static processing.core.PConstants.SQUARE;
@@ -31,7 +30,7 @@ public class Twig extends TreeComponent {
         leavesList[0] = leaf1;
 
         Leaf leaf2 = new Leaf(p);
-        Coordinate secondLeafRoot = AdditionalTools.localPolarInput(
+        Coordinate secondLeafRoot = Coordinate.localPolarInput(
                 rootCoordinate.getX(),
                 rootCoordinate.getY(),
                 twigLength / 3,
@@ -43,7 +42,7 @@ public class Twig extends TreeComponent {
 
         Leaf leaf3 = new Leaf(p);
 
-        Coordinate thirdLeafRoot = AdditionalTools.localPolarInput(
+        Coordinate thirdLeafRoot = Coordinate.localPolarInput(
                 rootCoordinate.getX(),
                 rootCoordinate.getY(),
                 (twigLength / 3) * 2,
@@ -55,7 +54,7 @@ public class Twig extends TreeComponent {
 
         Leaf leaf4 = new Leaf(p);
 
-        Coordinate fourthLeafRoot = AdditionalTools.localPolarInput(
+        Coordinate fourthLeafRoot = Coordinate.localPolarInput(
                 rootCoordinate.getX(),
                 rootCoordinate.getY(),
                 (twigLength / 3) * 2,
@@ -67,7 +66,7 @@ public class Twig extends TreeComponent {
 
         Leaf leaf5 = new Leaf(p);
 
-        Coordinate fifthLeafRoot = AdditionalTools.localPolarInput(
+        Coordinate fifthLeafRoot = Coordinate.localPolarInput(
                 rootCoordinate.getX(),
                 rootCoordinate.getY(),
                 twigLength / 3,

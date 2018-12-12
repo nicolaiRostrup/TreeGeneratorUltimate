@@ -1,7 +1,9 @@
 //This project is in debt to the processing script supplied by Kung-Ta Tseng for producing generative trees. Thank you.
 package com;
 
+import com.util.Menu;
 import com.util.NumberMachine;
+import com.util.TreeDesign;
 import com.util.TreeGenerator;
 import processing.core.PApplet;
 import java.io.FileNotFoundException;
@@ -12,9 +14,9 @@ public class MainApp extends PApplet {
 
     public static void main(String[] args) {
 
-//        Menu menu = new Menu();
-//        menu.welcomeMessage();
-//        menu.gatherTreeDesign();
+        Menu menu = new Menu();
+        menu.welcomeMessage();
+        menu.gatherTreeDesign();
 //        menu.processUserPreferences();
 
         PApplet.main("com.MainApp", args);

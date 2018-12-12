@@ -4,7 +4,6 @@ package com.lists;
 import com.components.Branch;
 import com.components.TreeComponent;
 import com.components.Trunk;
-import com.components.Twig;
 import com.util.Menu;
 import processing.core.PApplet;
 
@@ -178,7 +177,7 @@ public class Tree {
     }
 
 
-    public void reopenThinBranches() {
+    public void reopenThinBranches(float minBranchThickness) {
 
         Node n = head;
         Branch branch = new Branch(p);
@@ -187,7 +186,7 @@ public class Tree {
         while (n != null) {
 
 
-            if (n.t.endWidth < Menu.getMinBranchThickness()
+            if (n.t.endWidth < minBranchThickness
                     && n.t.getClass().isInstance(branch)
                     && counter % 2 == 0) {
                 n.t.hasOpenEnd = true;

@@ -9,21 +9,25 @@ public class Coordinate {
         return x;
     }
 
-    public void setX(float x) {
-        this.x = x;
-    }
-
     public float getY() {
         return y;
-    }
-
-    public void setY(float y) {
-        this.y = y;
     }
 
     public Coordinate(float x, float y) {
         this.x = x;
         this.y = y;
+
+    }
+
+    public static Coordinate localPolarInput(float x, float y, float r, float theta) {
+
+        float newX = (float) (r * Math.cos(theta));
+        float newY = (float) (r * Math.sin(theta));
+
+        newX = newX + x;
+        newY = newY + y;
+
+        return new Coordinate(newX, newY);
 
     }
 }

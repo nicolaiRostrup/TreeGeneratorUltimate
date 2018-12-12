@@ -1,6 +1,6 @@
 package com.components;
 
-import com.util.Menu;
+import com.util.TreeDesign;
 import processing.core.PApplet;
 
 
@@ -22,7 +22,7 @@ public class Root extends TreeComponent {
         Coordinate bottomRight = new Coordinate(rootCoordinate.getX() + 85, rootCoordinate.getY());
 
         p.noStroke();
-        p.fill(Menu.getColorOfBark()[0] + 25, Menu.getColorOfBark()[1] + 25, Menu.getColorOfBark()[2] + 25);
+        p.fill(TreeDesign.getColorOfBark()[0] + 25, TreeDesign.getColorOfBark()[1] + 25, TreeDesign.getColorOfBark()[2] + 25);
 
         p.triangle(this.topCoordinate.getX(),
                 this.topCoordinate.getY(),
