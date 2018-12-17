@@ -17,10 +17,10 @@ public class Trunk extends TreeComponent {
     }
 
     @Override
-    public void generateShading() {
+    public void generateShading(int[] barkColor, int[] leafColor) {
 
 
-        p.stroke(TreeDesign.getColorOfBark()[0] + 25, TreeDesign.getColorOfBark()[1] + 25, TreeDesign.getColorOfBark()[2] + 25);
+        p.stroke(barkColor[0], barkColor[1], barkColor[2]);
 
         p.strokeWeight(this.endWidth);
         p.strokeCap(SQUARE);

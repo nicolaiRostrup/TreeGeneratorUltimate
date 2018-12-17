@@ -19,13 +19,13 @@ public class Coordinate {
 
     }
 
-    public static Coordinate localPolarInput(float x, float y, float r, float theta) {
+    public static Coordinate localPolarInput(Coordinate coord, float r, float theta) {
 
         float newX = (float) (r * Math.cos(theta));
         float newY = (float) (r * Math.sin(theta));
 
-        newX = newX + x;
-        newY = newY + y;
+        newX = newX + coord.getX();
+        newY = newY + coord.getY();
 
         return new Coordinate(newX, newY);
 

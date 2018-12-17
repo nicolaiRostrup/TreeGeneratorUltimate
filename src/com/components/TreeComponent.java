@@ -7,7 +7,6 @@ public abstract class TreeComponent {
 
     PApplet p;
 
-
     public boolean hasOpenEnd;
     public float endWidth;
     public float growAngle;
@@ -17,7 +16,7 @@ public abstract class TreeComponent {
 
     // This method all subclasses must implement
 
-    abstract public void generateShading();
+    abstract public void generateShading(int[] barkColor, int[] leafColor);
 
     //The below methods all subclasses can use freely;
 
@@ -42,8 +41,7 @@ public abstract class TreeComponent {
     public Coordinate extendEndpoint() {
         float extensionLength = 0.2f * this.getLength();
         return Coordinate.localPolarInput(
-                this.topCoordinate.getX(),
-                this.topCoordinate.getY(),
+                this.topCoordinate,
                 extensionLength,
                 this.growAngle);
 

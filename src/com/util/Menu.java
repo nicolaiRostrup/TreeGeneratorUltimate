@@ -33,19 +33,25 @@ public class Menu {
         while (true) {
 
             System.out.println("Please choose your preferred tree features:");
-            System.out.println("What overall tree size would you like? (S)mall? (M)edium? (L)arge?");
+            System.out.println("What kind of trunk design, would you like? (S)lim, (N)ormal or (W)ide?");
             String answer = sc.nextLine();
 
             if (answer.equalsIgnoreCase("s")) {
-                //treeDesign.size = ;
+                treeDesign.setInitialWidth(30f);
+                treeDesign.setMaxTrunkSections(4);
+                treeDesign.setBigBranchProbability(3);
                 break;
             }
-            if (answer.equalsIgnoreCase("m")) {
-
+            if (answer.equalsIgnoreCase("n")) {
+                treeDesign.setInitialWidth(50f);
+                treeDesign.setMaxTrunkSections(4);
+                treeDesign.setBigBranchProbability(5);
                 break;
             }
-            if (answer.equalsIgnoreCase("l")) {
-
+            if (answer.equalsIgnoreCase("w")) {
+                treeDesign.setInitialWidth(100f);
+                treeDesign.setMaxTrunkSections(3);
+                treeDesign.setBigBranchProbability(6);
                 break;
             }
         }
@@ -57,15 +63,33 @@ public class Menu {
             String answer = sc.nextLine();
 
             if (answer.equalsIgnoreCase("t")) {
-
+                treeDesign.setStretchTopBranches(true);
+                treeDesign.setBranchLengthLow(50f);
+                treeDesign.setBranchLengthHigh(80f);
+                treeDesign.setTrunkHeight(275f);
+                treeDesign.setBranchNumberHigh(3);
+                treeDesign.setTrimLimitAngle(0.1f);
+                treeDesign.setMinBranchThickness(0.2f);
                 break;
             }
             if (answer.equalsIgnoreCase("s")) {
-
+                treeDesign.setStretchTopBranches(false);
+                treeDesign.setBranchLengthLow(30f);
+                treeDesign.setBranchLengthHigh(60f);
+                treeDesign.setTrunkHeight(200f);
+                treeDesign.setBranchNumberHigh(4);
+                treeDesign.setTrimLimitAngle(0);
+                treeDesign.setMinBranchThickness(0.5f);
                 break;
             }
             if (answer.equalsIgnoreCase("w")) {
-
+                treeDesign.setStretchTopBranches(false);
+                treeDesign.setBranchLengthLow(60f);
+                treeDesign.setBranchLengthHigh(100f);
+                treeDesign.setTrunkHeight(230f);
+                treeDesign.setBranchNumberHigh(4);
+                treeDesign.setTrimLimitAngle(0.9f);
+                treeDesign.setMinBranchThickness(0.4f);
                 break;
             }
         }
@@ -77,15 +101,15 @@ public class Menu {
             String answer = sc.nextLine();
 
             if (answer.equalsIgnoreCase("n")) {
-
+                treeDesign.setRelativeRotation(0);
                 break;
             }
             if (answer.equalsIgnoreCase("m")) {
-
+                treeDesign.setRelativeRotation(0.4f);
                 break;
             }
             if (answer.equalsIgnoreCase("s")) {
-
+                treeDesign.setRelativeRotation(1f);
                 break;
             }
         }
@@ -97,15 +121,15 @@ public class Menu {
             String answer = sc.nextLine();
 
             if (answer.equalsIgnoreCase("d")) {
-
+                treeDesign.setColorOfBark(new int[]{50, 21, 6});
                 break;
             }
             if (answer.equalsIgnoreCase("g")) {
-
+                treeDesign.setColorOfBark(new int[]{0,65,0});
                 break;
             }
             if (answer.equalsIgnoreCase("l")) {
-
+                treeDesign.setColorOfBark(new int[]{169, 179, 168});
                 break;
             }
         }
@@ -113,23 +137,24 @@ public class Menu {
         while (true) {
 
             System.out.println("And, finally, please choose last tree feature:");
-            System.out.println("What color should the leaves have? (D)ark green? (L)ight green? (O)range or (R)ed?");
+            System.out.println("What color should the leaves have? (D)ark green? (L)ight green? (O)range or (N)o leaves");
             String answer = sc.nextLine();
 
             if (answer.equalsIgnoreCase("d")) {
-
+                treeDesign.setColorOfLeaves(new int[]{7, 38, 4,26,77,15,30,133,6});
                 break;
             }
             if (answer.equalsIgnoreCase("l")) {
-
+                treeDesign.setColorOfLeaves(new int[]{9, 80, 1,25,120,5, 39,194,1});
                 break;
             }
+
             if (answer.equalsIgnoreCase("o")) {
-
+                treeDesign.setColorOfLeaves(new int[]{79, 29, 5,138,0,32, 255,143,35});
                 break;
             }
-            if (answer.equalsIgnoreCase("r")) {
-
+            if (answer.equalsIgnoreCase("n")) {
+                treeDesign.setSkipLeaves(true);
                 break;
             }
         }
@@ -139,83 +164,6 @@ public class Menu {
 
 
     }
-//
-//    public void processUserPreferences() {
-////
-//
-//       TreeSize
-//        if (treeSize == TreeSize.SMALL) {
-//            sizeFactor = 0.25f;
-//        }
-//        if (treeSize == TreeSize.MEDIUM) {
-//            sizeFactor = 0.4f;
-//        }
-//        if (treeSize == TreeSize.LARGE) {
-//            sizeFactor = 0.55f;
-//        }
-//        //CrownShape
-//        if (crownShape == CrownShape.TALL) {
-//            crownWidthFactor = 0.25f;
-//            crownHeightFactor = 1f;
-//            branchLengthLow = 100;
-//            branchLengthHigh = 120;
-//        }
-//        if (crownShape == CrownShape.SHORT) {
-//            crownWidthFactor = 0.25f;
-//            crownHeightFactor = 0.25f;
-//            branchLengthLow = 50;
-//            branchLengthHigh = 75;
-//        }
-//        if (crownShape == CrownShape.WIDE) {
-//            crownWidthFactor = 1.25f;
-//            crownHeightFactor = 0.3f; //
-//            branchLengthLow = 100;
-//            branchLengthHigh = 120;
-//        }
-//        //Irregularity
-//        if (irregularity == Irregularity.NONE) {
-//            randomRadiusFactor = 0;
-//            branchNumberLow = 2;
-//            branchNumberHigh = 2;
-//            branchLengthHigh = (branchLengthHigh + branchLengthLow) / 2;
-//        }
-//        if (irregularity == Irregularity.MODERATE) {
-//            randomRadiusFactor = 4f;
-//            branchNumberLow = 2;
-//            branchNumberHigh = 4;
-//        }
-//        if (irregularity == Irregularity.STRONG) {
-//            randomRadiusFactor = 10f;
-//            branchNumberLow = 1;
-//            branchNumberHigh = 5;
-//        }
-//
-//        //BarkColor
-//        if (barkColor == BarkColor.DARKBROWN) {
-//            colorOfBark = new int[]{50,21,6};
-//        }
-//        if (barkColor == BarkColor.GREEN) {
-//            colorOfBark = new int[]{0,65,0};
-//        }
-//        if (barkColor == BarkColor.LIGHTGREY) {
-//            colorOfBark = new int[]{169, 179, 168};
-//        }
-//
-//        //LeafColor
-//        if (leafColor == LeafColor.DARKGREEN) {
-//            colorOfLeaves = new int[]{0, 51, 0};
-//        }
-//        if (leafColor == LeafColor.LIGHTGREEN) {
-//            colorOfLeaves = new int[]{39, 194, 1};
-//        }
-//        if (leafColor == LeafColor.ORANGE) {
-//            colorOfLeaves = new int[]{247, 134, 9};
-//        }
-//        if (leafColor == LeafColor.RED) {
-//            colorOfLeaves = new int[]{216, 51, 10};
-//        }
-//
-//
-//    }
+
 }
 

@@ -15,5 +15,9 @@ public class Node {
         this.t = t;
     }
 
+    Node() {
+
+    }
+
 
 }

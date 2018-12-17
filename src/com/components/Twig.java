@@ -8,10 +8,6 @@ import static processing.core.PConstants.SQUARE;
 
 public class Twig extends TreeComponent {
 
-    public float growAngle;
-    public Coordinate rootCoordinate;
-    public Coordinate topCoordinate;
-    public float twigLength;
     private Leaf[] leavesList = new Leaf[5];
     private PApplet p;
 
@@ -24,54 +20,33 @@ public class Twig extends TreeComponent {
 
     public Leaf[] generateLeaves() {
 
+        float twigLength = this.getLength();
+
         Leaf leaf1 = new Leaf(p);
         leaf1.growAngle = this.growAngle;
         leaf1.rootCoordinate = this.topCoordinate;
         leavesList[0] = leaf1;
 
         Leaf leaf2 = new Leaf(p);
-        Coordinate secondLeafRoot = Coordinate.localPolarInput(
-                rootCoordinate.getX(),
-                rootCoordinate.getY(),
-                twigLength / 3,
-                growAngle);
-
+        Coordinate secondLeafRoot = Coordinate.localPolarInput(rootCoordinate,twigLength / 3,growAngle);
         leaf2.growAngle = growAngle - p.PI / 4;
         leaf2.rootCoordinate = secondLeafRoot;
         leavesList[1] = leaf2;
 
         Leaf leaf3 = new Leaf(p);
-
-        Coordinate thirdLeafRoot = Coordinate.localPolarInput(
-                rootCoordinate.getX(),
-                rootCoordinate.getY(),
-                (twigLength / 3) * 2,
-                growAngle);
-
+        Coordinate thirdLeafRoot = Coordinate.localPolarInput(rootCoordinate,(twigLength / 3) * 2, growAngle);
         leaf3.growAngle = growAngle - p.PI / 4;
         leaf3.rootCoordinate = thirdLeafRoot;
         leavesList[2] = leaf3;
 
         Leaf leaf4 = new Leaf(p);
-
-        Coordinate fourthLeafRoot = Coordinate.localPolarInput(
-                rootCoordinate.getX(),
-                rootCoordinate.getY(),
-                (twigLength / 3) * 2,
-                growAngle);
-
+        Coordinate fourthLeafRoot = Coordinate.localPolarInput(rootCoordinate,(twigLength / 3) * 2, growAngle);
         leaf4.growAngle = growAngle + p.PI / 4;
         leaf4.rootCoordinate = fourthLeafRoot;
         leavesList[3] = leaf4;
 
         Leaf leaf5 = new Leaf(p);
-
-        Coordinate fifthLeafRoot = Coordinate.localPolarInput(
-                rootCoordinate.getX(),
-                rootCoordinate.getY(),
-                twigLength / 3,
-                growAngle);
-
+        Coordinate fifthLeafRoot = Coordinate.localPolarInput(rootCoordinate,twigLength / 3, growAngle);
         leaf5.growAngle = growAngle + p.PI / 4;
         leaf5.rootCoordinate = fifthLeafRoot;
         leavesList[4] = leaf5;
@@ -79,7 +54,7 @@ public class Twig extends TreeComponent {
         return leavesList;
     }
 
-    public void generateShading() {
+    public void generateShading(int[] barkColor, int[] leafColor) {
 
         p.stroke(15, 0, 0);
 

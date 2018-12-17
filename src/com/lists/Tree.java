@@ -4,7 +4,6 @@ package com.lists;
 import com.components.Branch;
 import com.components.TreeComponent;
 import com.components.Trunk;
-import com.util.Menu;
 import processing.core.PApplet;
 
 public class Tree {
@@ -52,10 +51,8 @@ public class Tree {
             if (n.t == t) {
                 return n;
             }
-
             n = n.next;
         }
-
         return null;
 
     }
@@ -131,11 +128,8 @@ public class Tree {
 
                 return n.t;
             }
-
             n = n.next;
-
         }
-
         return null;
 
     }
@@ -150,12 +144,9 @@ public class Tree {
             if (n.t.hasOpenEnd && n.t.getClass().isInstance(trunk)) {
                 return (Trunk) n.t;
             }
-
             n = n.next;
         }
-
         return null;
-
 
     }
 
@@ -168,10 +159,8 @@ public class Tree {
             if (n.t.hasOpenEnd && n.t.getClass().isInstance(branch)) {
                 return (Branch) n.t;
             }
-
             n = n.next;
         }
-
         return null;
 
     }
@@ -185,7 +174,6 @@ public class Tree {
 
         while (n != null) {
 
-
             if (n.t.endWidth < minBranchThickness
                     && n.t.getClass().isInstance(branch)
                     && counter % 2 == 0) {
@@ -193,6 +181,39 @@ public class Tree {
             }
             counter++;
             n = n.next;
+        }
+
+    }
+
+    public void swapNodes(TreeComponent c1, TreeComponent c2) {
+        Node x = findNode(c1);
+        Node y = findNode(c2);
+        Node temp = new Node();
+
+        processSwap(x, temp);
+        processSwap(y, x);
+        processSwap(temp, y);
+
+    }
+
+    private void processSwap(Node n1, Node n2) {
+
+
+        if (n1 != head) {
+            n1.previous.next = n2;
+            n2.previous = n1.previous;
+        }
+        if (n1 != tail) {
+            n1.next.previous = n2;
+            n2.next = n1.next;
+        }
+        if (n1 == head) {
+            head = n2;
+            head.previous = null;
+        }
+        if (n1 == tail) {
+            tail = n2;
+            tail.next = null;
         }
 
     }

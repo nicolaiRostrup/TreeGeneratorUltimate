@@ -17,16 +17,16 @@ public class Leaf extends TreeComponent {
     }
 
     @Override
-    public void generateShading() {
+    public void generateShading(int[] barkColor, int[] leafColor) {
 
-        p.stroke(9, 80, 1);
+        p.stroke(leafColor[0], leafColor[1], leafColor[2]);
 
         if (checkForLeafColor() == 1) {
-            p.fill(39, 194, 1, 200);
+            p.fill(leafColor[3], leafColor[4], leafColor[5], 200);
         }
 
         if (checkForLeafColor() == 2) {
-            p.fill(25, 120, 5, 200);
+            p.fill(leafColor[6], leafColor[7], leafColor[8], 200);
         }
 
 

@@ -1,28 +1,26 @@
 package com.components;
 
-import com.util.TreeDesign;
 import processing.core.PApplet;
 
 
 public class Root extends TreeComponent {
 
+    public Coordinate bottomLeft;
+    public Coordinate bottomRight;
+
+
     public Root(PApplet p) {
 
         this.p = p;
-        this.hasOpenEnd = false;
-
 
     }
 
 
     @Override
-    public void generateShading() {
-
-        Coordinate bottomLeft = new Coordinate(rootCoordinate.getX() - 60, rootCoordinate.getY());
-        Coordinate bottomRight = new Coordinate(rootCoordinate.getX() + 85, rootCoordinate.getY());
+    public void generateShading(int[] barkColor, int[] leafColor) {
 
         p.noStroke();
-        p.fill(TreeDesign.getColorOfBark()[0] + 25, TreeDesign.getColorOfBark()[1] + 25, TreeDesign.getColorOfBark()[2] + 25);
+        p.fill(barkColor[0], barkColor[1], barkColor[2]);
 
         p.triangle(this.topCoordinate.getX(),
                 this.topCoordinate.getY(),

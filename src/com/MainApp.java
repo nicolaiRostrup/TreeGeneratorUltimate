@@ -3,7 +3,6 @@ package com;
 
 import com.util.Menu;
 import com.util.NumberMachine;
-import com.util.TreeDesign;
 import com.util.TreeGenerator;
 import processing.core.PApplet;
 import java.io.FileNotFoundException;
@@ -17,7 +16,6 @@ public class MainApp extends PApplet {
         Menu menu = new Menu();
         menu.welcomeMessage();
         menu.gatherTreeDesign();
-//        menu.processUserPreferences();
 
         PApplet.main("com.MainApp", args);
 

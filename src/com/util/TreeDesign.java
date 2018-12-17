@@ -3,104 +3,159 @@ package com.util;
 public final class TreeDesign {
 
     //this class is designed as a singleton:
-
     private static final TreeDesign INSTANCE = new TreeDesign();
 
+    //trunk related parameters
+    private  float trunkHeight;
+    private  float initialWidth;
+    private  int maxTrunkSections;
+    private int bigBranchProbability;
+    //branch related parameters
+    private  float basicAngle = 0.5f;
+    private  float relativeRotation;
+    private  int branchNumberLow = 2;
+    private  int branchNumberHigh;
+    private  float branchLengthLow;
+    private  float branchLengthHigh;
+    private  float minBranchThickness;
+    private  float trimLimitAngle;
+    private  boolean stretchTopBranches;
+    //colors
+    private  int[] colorOfBark;
+    private  int[] colorOfLeaves;
+    //leaves
+    private boolean skipLeaves = false;
+
     private TreeDesign() {}
+
 
     public  static TreeDesign getInstance() {
         return INSTANCE;
     }
 
-    //todo: create full list of key variables and collect these in a menu object, which is returned to treegenerator...
-
-    private  float basicAngle = 0.5f;
-    private  float trunkHeight = 325f;
-    private  float initialWidth = 50f;
-    private  float relativeRotationMax = 0.45f;
-    private  float relativeRotationMin = -0.45f;
-    private  float bigBranchAngleLow = 0.45f;
-    private  int branchNumberLow = 2;
-    private  int branchNumberHigh = 4;
-    private  float branchLengthLow = 60f;
-    private  float branchLengthHigh = 100f;
-    private  int maxTrunkSections = 6;
-    private  float bigBranchAngleHigh = 0.85f;
-    private  float minBranchThickness = 0.4f;
-    private  float trimLimitAngle = 1.5f;
-    private  static int[] colorOfBark = new int[]{50, 21, 6};
-    private  static int[] colorOfLeaves = new int[]{247, 134, 9};
-    private  boolean stretchTopBranches = false;
-
-
     public  int getBranchNumberLow() {
         return branchNumberLow;
+    }
+
+    public void setBranchNumberLow(int branchNumberLow) {
+        this.branchNumberLow = branchNumberLow;
     }
 
     public  int getBranchNumberHigh() {
         return branchNumberHigh;
     }
 
+    public void setBranchNumberHigh(int branchNumberHigh) {
+        this.branchNumberHigh = branchNumberHigh;
+    }
+
     public  float getBranchLengthLow() {
         return branchLengthLow;
+    }
+
+    public void setBranchLengthLow(float branchLengthLow) {
+        this.branchLengthLow = branchLengthLow;
     }
 
     public  float getBranchLengthHigh() {
         return branchLengthHigh;
     }
 
-    public  static int[] getColorOfBark() {
+    public void setBranchLengthHigh(float branchLengthHigh) {
+        this.branchLengthHigh = branchLengthHigh;
+    }
+
+    public  int[] getColorOfBark() {
         return colorOfBark;
     }
 
-    public  static int[] getColorOfLeaves() {
+    public void setColorOfBark(int[] colorOfBark) {
+        this.colorOfBark = colorOfBark;
+    }
 
-        return colorOfLeaves;
+    public  int[] getColorOfLeaves() {return colorOfLeaves;}
+
+    public void setColorOfLeaves(int[] colorOfLeaves) {
+        this.colorOfLeaves = colorOfLeaves;
     }
 
     public  float getInitialWidth() {
         return initialWidth;
     }
 
-    public  float getRelativeRotationMin() {
-        return relativeRotationMin;
-    }
-
-    public  float getRelativeRotationMax() {
-        return relativeRotationMax;
+    public void setInitialWidth(float initialWidth) {
+        this.initialWidth = initialWidth;
     }
 
     public  float getTrunkHeight() {
         return trunkHeight;
     }
 
+    public void setTrunkHeight(float trunkHeight) {
+        this.trunkHeight = trunkHeight;
+    }
+
     public  float getBasicAngle() {
         return basicAngle;
+    }
+
+    public void setBasicAngle(float basicAngle) {
+        this.basicAngle = basicAngle;
     }
 
     public  int getMaxTrunkSections() {
         return maxTrunkSections;
     }
 
-    public  float getBigBranchAngleLow() {
-        return bigBranchAngleLow;
-    }
-
-    public  float getBigBranchAngleHigh() {
-        return bigBranchAngleHigh;
+    public void setMaxTrunkSections(int maxTrunkSections) {
+        this.maxTrunkSections = maxTrunkSections;
     }
 
     public  float getMinBranchThickness() {
         return minBranchThickness;
     }
 
-    public  float getTrimLimitAngle() {
-        return trimLimitAngle;
+    public void setMinBranchThickness(float minBranchThickness) {
+        this.minBranchThickness = minBranchThickness;
     }
 
     public  boolean getStretchTopBranches() {
         return stretchTopBranches;
     }
 
+    public void setStretchTopBranches(boolean stretchTopBranches) {
+        this.stretchTopBranches = stretchTopBranches;
+    }
 
+    public float getRelativeRotation() {
+        return relativeRotation;
+    }
+
+    public void setRelativeRotation(float relativeRotation) {
+        this.relativeRotation = relativeRotation;
+    }
+
+    public float getTrimLimitAngle() {
+        return trimLimitAngle;
+    }
+
+    public void setTrimLimitAngle(float trimLimitAngle) {
+        this.trimLimitAngle = trimLimitAngle;
+    }
+
+    public int getBigBranchProbability() {
+        return bigBranchProbability;
+    }
+
+    public void setBigBranchProbability(int bigBranchProbability) {
+        this.bigBranchProbability = bigBranchProbability;
+    }
+
+    public boolean getSkipLeaves() {
+        return skipLeaves;
+    }
+
+    public void setSkipLeaves(boolean skipLeaves) {
+        this.skipLeaves = skipLeaves;
+    }
 }
