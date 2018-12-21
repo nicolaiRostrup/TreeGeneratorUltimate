@@ -15,7 +15,7 @@ The app is written entirely in Java and takes advantage of the processing librar
 
 ### Tree number 598.
 
-<img src=/testImage20.jpg width="800">
+<img src=/testImage20.jpg height="1000">
 
 
 
