@@ -11,11 +11,11 @@ The app is written entirely in Java and takes advantage of the processing librar
 
 ### The very first "tree"
 
-<img src=/tree 000000000001.jpg width="800">
+<img src=/testImage1.jpg width="800">
 
 ### Tree number 598.
 
-<img src=/dvonn_board.jpg width="800">
+<img src=/testImage20.jpg width="800">
 
 
 
