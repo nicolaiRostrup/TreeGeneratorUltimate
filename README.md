@@ -11,7 +11,7 @@ The app is written entirely in Java and takes advantage of the processing librar
 
 ### The very first "tree"
 
-<img src=/dvonn_board.jpg width="800">
+<img src=//tree%2000000000001.jpg width="800">
 
 ### Tree number 598.
 
